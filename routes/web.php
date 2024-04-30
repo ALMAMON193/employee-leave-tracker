@@ -17,7 +17,7 @@ use App\Http\Controllers\LeaveHistoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 // Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('admin/dashboard', [AdminDashboardController::class, 'showDashboard'])->name('admin.dashboard');
+    Route::get('dashboard', [AdminDashboardController::class, 'showDashboard'])->name('admin.dashboard');
     Route::put('/leave-requests/{leaveRequest}/approve', [LeaveRequestController::class, 'approveLeaveRequest'])->name('leave.approve');
     Route::put('/leave-requests/{leaveRequest}/reject', [LeaveRequestController::class, 'rejectLeaveRequest'])->name('leave.reject');
 });
